@@ -368,12 +368,17 @@ class GenericAlternativeFinder(MedicineOCR):
         
 # Main execution example - Updated with security and error handling
 if __name__ == "__main__":
+    from dotenv import load_dotenv
+    import os
+
+     # Load environment variables from .env file
+    load_dotenv()
+
     # MongoDB Atlas connection details
-    # Consider using environment variables for these credentials
-    MONGODB_URI = "mongodb+srv://anusharawat04:Anuwho27%21%3F@cluster0.7g7qd1j.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-    DB_NAME = "meditrust"
-    MEDICINE_COLLECTION = "medicines"
-    GENERIC_COLLECTION = "generic_med"
+    MONGODB_URI = os.getenv("MONGODB_URI")
+    DB_NAME = os.getenv("DB_NAME", "meditrust")
+    MEDICINE_COLLECTION = os.getenv("MEDICINE_COLLECTION", "medicines")
+    GENERIC_COLLECTION = os.getenv("GENERIC_COLLECTION", "generic_med")
     
     # Path to image
     image_path = "/Users/aggarwaladi123/Downloads/meditrustapp/backend/3.jpg"
